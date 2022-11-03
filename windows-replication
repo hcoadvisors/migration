@@ -1,3 +1,2 @@
-powershell -command "& { iwr https://aws-application-migration-service-us-east-1.s3.us-east-1.amazonaws.com/latest/windows/AwsReplicationWindowsInstaller.exe -OutFile AwsReplicationWindowsInstaller.exe }"
-
-.\AwsReplicationWindowsInstaller.exe --region us-east-1 --aws-access-key-id AKIA5KJFHSMOA4UM7NN2 --aws-secret-access-key 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 --no-prompt
+powershell -command "& { iwr https://aws-application-migration-service-us-east-1.s3.us-east-1.amazonaws.com/latest/windows/AwsReplicationWindowsInstaller.exe -OutFile (New-Item -path "C:\awsdisc\AwsReplicationWindowsInstaller.exe") }"
+#C:\awsdisc\AwsReplicationWindowsInstaller.exe --region us-east-1 --aws-access-key-id AKIA5KJFHSMOA4UM7NN2 --aws-secret-access-key 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 --no-prompt
