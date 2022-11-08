@@ -1,0 +1,16 @@
+Uninstall-WindowsFeature -name Remote-Desktop-Services -includemanagementtools
+
+$domaincma = "SCGSB1C.com"
+$passwordcma = "@W52022$" | ConvertTo-SecureString -asPlainText -Force
+$usernamecma = ".\hcoadmin"
+$credentialcma = New-Object System.Management.Automation.PSCredential($usernamecma,$passwordcma)
+
+Remove-Computer -UnjoinDomainCredential $credentialcma -Force
+
+$domain = "starkcloud.aws"
+$password = "6wKeHbhM9W5gHJ" | ConvertTo-SecureString -asPlainText -Force
+$username = "$domain\adservice"
+$credential = New-Object System.Management.Automation.PSCredential($username,$password)
+
+
+add-computer –domainname $domain -credential $credential -restart

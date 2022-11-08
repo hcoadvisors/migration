@@ -1,1 +1,0 @@
-Uninstall-WindowsFeature -name Remote-Desktop-Services -includemanagementtools -restart
