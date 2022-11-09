@@ -38,3 +38,6 @@ $html | Set-Content 'C:\Program Files (x86)\TSPlus-ME\Clients\www\cloud-applicat
 $appconf =Get-Content -path 'C:\awsdisc\tsplus\tsp-apps-config.txt' -raw
 $appconf | Add-Content 'C:\Program Files (x86)\TSPlus-ME\UserDesktop\files\AppControl.ini'
 
+
+###RESTART
+Restart-Computer
