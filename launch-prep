@@ -2,6 +2,7 @@
 
 Uninstall-WindowsFeature -name Remote-Desktop-Services -includemanagementtools
 
+New-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\ -Name NetJoinLegacyAccountReuse -PropertyType DWORD -Value 1
 
 ###UNJOIN DOMAIN
 $domaincma = "SCGSB1C.com"
