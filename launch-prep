@@ -48,11 +48,12 @@ Uninstall-WindowsFeature -name Remote-Desktop-Services -includemanagementtools
 ### WINDOWS_EXPORTER PROMETHEUS
 
 $WINDOWS_EXPORTER_VERSION="0.20.0"
+cd ~/Downloads/
 
 Invoke-WebRequest -Uri https://github.com/prometheus-community/windows_exporter/releases/download/v$WINDOWS_EXPORTER_VERSION/windows_exporter-$WINDOWS_EXPORTER_VERSION-amd64.msi -OutFile windows_exporter.msi
 msiexec /i windows_exporter.msi ENABLED_COLLECTORS="cache,cpu,cpu_info,cs,logical_disk,logon,memory,net,os,process,time" 
-sleep 2
-Set-Service -Name "windows_exporter" -StartupType Automatic -Status Running
+sleep 5
+Set-Service -Name "windows_exporter" -StartupType AutomaticDelayedStart -Status Running
 Remove-Item -force .\windows_exporter.msi
 
 
