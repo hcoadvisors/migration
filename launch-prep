@@ -1,8 +1,8 @@
-###REMOVE RDS
 
-Uninstall-WindowsFeature -name Remote-Desktop-Services -includemanagementtools
+###NETJOINLEGACY REGISTRY KEY
 
 New-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\ -Name NetJoinLegacyAccountReuse -PropertyType DWORD -Value 1
+
 
 ###UNJOIN DOMAIN
 $domaincma = "SCGSB1C.com"
@@ -18,7 +18,7 @@ $password = "6wKeHbhM9W5gHJ" | ConvertTo-SecureString -asPlainText -Force
 $username = "$domain\adservice"
 $credential = New-Object System.Management.Automation.PSCredential($username,$password)
 
-Add-computer –domainname $domain -credential $credential -restart
+Add-computer –domainname $domain -credential $credential
 
 
 ###TSPLUS
@@ -38,6 +38,11 @@ $html = $temp -replace '!EnvTitle',$envtitle
 $html | Set-Content 'C:\Program Files (x86)\TSPlus-ME\Clients\www\cloud-applications.html' -Force
 $appconf =Get-Content -path 'C:\awsdisc\tsplus\tsp-apps-config.txt' -raw
 $appconf | Add-Content 'C:\Program Files (x86)\TSPlus-ME\UserDesktop\files\AppControl.ini'
+
+
+###REMOVE RDS
+
+Uninstall-WindowsFeature -name Remote-Desktop-Services -includemanagementtools
 
 
 ###RESTART
