@@ -20,7 +20,7 @@ $credential = New-Object System.Management.Automation.PSCredential($username,$pa
 
 Add-computer –domainname $domain -credential $credential
 
-Remove-Item -Path HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\ -Name NetJoinLegacyAccountReuse
+Remove-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\ -Name NetJoinLegacyAccountReuse
 
 ###TSPLUS
 
