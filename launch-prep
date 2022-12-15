@@ -26,36 +26,36 @@ Remove-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\ -Name NetJ
 
 C:\awsdisc\Setup-TSPlus-ME.exe /VERYSILENT /NORESTART
 Sleep 180
-Copy-Item -Path C:\awsdisc\tsplus\assets -Destination 'C:\Program Files (x86)\TSPlus-ME\Clients\www' -Force
-Copy-Item -Path C:\awsdisc\tsplus\cloud-applications.html -Destination 'C:\Program Files (x86)\TSPlus-ME\Clients\www' -Force
-Copy-Item -Path C:\awsdisc\tsplus\css -Destination 'C:\Program Files (x86)\TSPlus-ME\Clients\www' -Force
-Copy-Item -Path C:\awsdisc\tsplus\settings.js -Destination 'C:\Program Files (x86)\TSPlus-ME\Clients\www\software\html5' -Force
-Copy-Item -Path C:\awsdisc\tsplus\ring64.gif -Destination 'C:\Program Files (x86)\TSPlus-ME\Clients\www\software\html5\imgs' -Force
-Copy-Item -Path C:\awsdisc\tsplus\common_applications.js -Destination 'C:\Program Files (x86)\TSPlus-ME\Clients\www\software' -Force
-$envtitle = "StarkCloud"
-#need a var on ansible for env title
-$temp =Get-Content -path 'C:\Program Files (x86)\TSPlus-ME\Clients\www\cloud-applications.html' -raw
-$html = $temp -replace '!EnvTitle',$envtitle
-$html | Set-Content 'C:\Program Files (x86)\TSPlus-ME\Clients\www\cloud-applications.html' -Force
-$appconf =Get-Content -path 'C:\awsdisc\tsplus\tsp-apps-config.txt' -raw
-$appconf | Add-Content 'C:\Program Files (x86)\TSPlus-ME\UserDesktop\files\AppControl.ini'
-
-#if (Test-Path -Path "C:\Program Files (x86)\TSPLUS-ME") {$tsplus = "TSPLUS-ME"} 
-#else {$tsplus = "TSPLUS"}
-
-#Copy-Item -Path C:\awsdisc\tsplus\assets -Destination "C:\Program Files (x86)\$tsplus\Clients\www" -Force
-#Copy-Item -Path C:\awsdisc\tsplus\cloud-applications.html -Destination "C:\Program Files (x86)\$tsplus\Clients\www" -Force
-#Copy-Item -Path C:\awsdisc\tsplus\css -Destination "C:\Program Files (x86)\$tsplus\Clients\www" -Force
-#Copy-Item -Path C:\awsdisc\tsplus\settings.js -Destination "C:\Program Files (x86)\$tsplus\Clients\www\software\html5" -Force
-#Copy-Item -Path C:\awsdisc\tsplus\ring64.gif -Destination "C:\Program Files (x86)\$tsplus\Clients\www\software\html5\imgs" -Force
-#Copy-Item -Path C:\awsdisc\tsplus\common_applications.js -Destination "C:\Program Files (x86)\$tsplus\Clients\www\software" -Force
+#Copy-Item -Path C:\awsdisc\tsplus\assets -Destination 'C:\Program Files (x86)\TSPlus-ME\Clients\www' -Force
+#Copy-Item -Path C:\awsdisc\tsplus\cloud-applications.html -Destination 'C:\Program Files (x86)\TSPlus-ME\Clients\www' -Force
+#Copy-Item -Path C:\awsdisc\tsplus\css -Destination 'C:\Program Files (x86)\TSPlus-ME\Clients\www' -Force
+#Copy-Item -Path C:\awsdisc\tsplus\settings.js -Destination 'C:\Program Files (x86)\TSPlus-ME\Clients\www\software\html5' -Force
+#Copy-Item -Path C:\awsdisc\tsplus\ring64.gif -Destination 'C:\Program Files (x86)\TSPlus-ME\Clients\www\software\html5\imgs' -Force
+#Copy-Item -Path C:\awsdisc\tsplus\common_applications.js -Destination 'C:\Program Files (x86)\TSPlus-ME\Clients\www\software' -Force
 #$envtitle = "StarkCloud"
 ##need a var on ansible for env title
-#$temp =Get-Content -path "C:\Program Files (x86)\$tsplus\Clients\www\cloud-applications.html" -raw
+#$temp =Get-Content -path 'C:\Program Files (x86)\TSPlus-ME\Clients\www\cloud-applications.html' -raw
 #$html = $temp -replace '!EnvTitle',$envtitle
-#$html | Set-Content "C:\Program Files (x86)\$tsplus\Clients\www\cloud-applications.html" -Force
-#$appconf =Get-Content -path "C:\awsdisc\tsplus\tsp-apps-config.txt" -raw
-#$appconf | Add-Content "C:\Program Files (x86)\$tsplus\UserDesktop\files\AppControl.ini"
+#$html | Set-Content 'C:\Program Files (x86)\TSPlus-ME\Clients\www\cloud-applications.html' -Force
+#$appconf =Get-Content -path 'C:\awsdisc\tsplus\tsp-apps-config.txt' -raw
+#$appconf | Add-Content 'C:\Program Files (x86)\TSPlus-ME\UserDesktop\files\AppControl.ini'
+
+if (Test-Path -Path "C:\Program Files (x86)\TSPLUS-ME") {$tsplus = "TSPLUS-ME"} 
+else {$tsplus = "TSPLUS"}
+
+Copy-Item -Path C:\awsdisc\tsplus\assets -Destination "C:\Program Files (x86)\$tsplus\Clients\www" -Force
+Copy-Item -Path C:\awsdisc\tsplus\cloud-applications.html -Destination "C:\Program Files (x86)\$tsplus\Clients\www" -Force
+Copy-Item -Path C:\awsdisc\tsplus\css -Destination "C:\Program Files (x86)\$tsplus\Clients\www" -Force
+Copy-Item -Path C:\awsdisc\tsplus\settings.js -Destination "C:\Program Files (x86)\$tsplus\Clients\www\software\html5" -Force
+Copy-Item -Path C:\awsdisc\tsplus\ring64.gif -Destination "C:\Program Files (x86)\$tsplus\Clients\www\software\html5\imgs" -Force
+Copy-Item -Path C:\awsdisc\tsplus\common_applications.js -Destination "C:\Program Files (x86)\$tsplus\Clients\www\software" -Force
+$envtitle = "StarkCloud"
+#need a var on ansible for env title
+$temp =Get-Content -path "C:\Program Files (x86)\$tsplus\Clients\www\cloud-applications.html" -raw
+$html = $temp -replace '!EnvTitle',$envtitle
+$html | Set-Content "C:\Program Files (x86)\$tsplus\Clients\www\cloud-applications.html" -Force
+$appconf =Get-Content -path "C:\awsdisc\tsplus\tsp-apps-config.txt" -raw
+$appconf | Add-Content "C:\Program Files (x86)\$tsplus\UserDesktop\files\AppControl.ini"
 
 
 ###REMOVE RDS
